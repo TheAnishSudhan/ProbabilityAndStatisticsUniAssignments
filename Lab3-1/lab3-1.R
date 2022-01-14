@@ -26,7 +26,8 @@ p
 y<-data.frame(x,p)
 y
 x_bar<-c(1,2,3,4,5)
-barplot(p,x_bar,names.arg=x,xlab="Random variable values", ylab="Probability of outcomes",main="Bar Plot of Probability Distribution")
+barplot(p,x_bar,names.arg=x,xlab="Random variable values", ylab="Probability of outcomes",
+        main="Bar Plot of Probability Distribution")
 print("P(x<2): ")
 sum(p[1]+p[2]+p[3]+p[4])
 cum_probability<-cumsum(p)
@@ -40,9 +41,9 @@ p_x<-c(1/5,1/5,2/5,2/15,1/15)
 v<-(x^2+1)
 p_v<-double()
 final_v<-double()
-seq<-1:5
-counter<-c(0,0,0,0,0)
-#loop logic to add up same probabilities
+seq<-1:length(x)
+counter<-numeric(length(x))
+#loop logic to add up probabilities of same values
 for (i in seq) {
   for (j in seq) {
     if ((v[i]==v[j])&&(i!=j)&&(counter[j]==0)&&(counter[i]==0)){
@@ -53,7 +54,7 @@ for (i in seq) {
     }
   }
 }
-#loop logic to include probabilities of distinct probabilities
+#loop logic to include probabilities of distinct values
 for (k in seq) {
   for (l in seq) {
     if ((v[k]==v[l])&&(k==l)&&(counter[k]==0)&&(counter[l]==0))
@@ -66,7 +67,8 @@ for (k in seq) {
 print("Probability distribution of v")
 data.frame(final_v,p_v)
 v_bar<-c(1,2,3)
-barplot(p_v,v_bar,names.arg=final_v,xlab="Random variable values (v)", ylab="Probability of outcomes",main="Bar Plot of Probability Distribution")
+barplot(p_v,v_bar,names.arg=final_v,xlab="Random variable values (v)", ylab="Probability of outcomes",
+        main="Bar Plot of Probability Distribution")
 
 
 
@@ -93,8 +95,9 @@ x_Px<-x*p
 data.frame(x,p,x_Px)
 E_x<-sum(x_Px)
 print("The Expectation:")
-E_x 
+E_x
 print("or")
 as.integer(E_x)
-barplot(p,x,names.arg=x,ylim=c(0,.70),xlab="Random variable values (v)", ylab="Probability of outcomes",main="Bar Plot of Probability Distribution")
+barplot(p,x,names.arg=x,ylim=c(0,.70),xlab="Random variable values", ylab="Probability of outcomes",
+        main="Bar Plot of Probability Distribution")
 
